@@ -1,16 +1,33 @@
 .grid-container{
     display: grid;
-    width: 75vh;
-    height: 75vh; 
+    background-color: white;
+    width: 640px;
+    height: 640px; 
+    margin: 25px;
+    border-color: aqua;
+    border-style: solid;
 }
 
 .grid-element{
     padding: 0px;
     margin: 0px;
-    width: 100%;
-    height: 100%;
+
 }
 
 .hover{
     background-color: #444;
+}
+
+
+body{
+    display: flex;
+    align-items: center;
+    background-color: #DA8FFB;
+}
+
+button{
+    font-size: 24pt;
+    border-radius: 4px;
+    display: inline;
+    vertical-align: 50%;
 }

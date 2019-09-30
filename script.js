@@ -5,6 +5,8 @@ body.appendChild(gridContainer);
 
 gridContainer.setAttribute("class", "grid-container");
 
+document.querySelector("#reset").addEventListener("click", newGame);
+
 createGrid(16);
 
 function createGrid(dimensions){
@@ -12,7 +14,7 @@ function createGrid(dimensions){
     gridContainer.style.gridTemplateRows = `repeat(${dimensions}, "1fr")`;
     
     //Creates dimensions-squared divs
-    for(let row = 0; row < dimensions*dimensions; row++){
+    for(let row = 0; row < dimensions; row++){
         for(let col = 0; col < dimensions; col++){
             let div = document.createElement("div");
             div.style.gridColumnStart = col;
@@ -22,7 +24,6 @@ function createGrid(dimensions){
             div.setAttribute("class", "grid-element");
             gridContainer.appendChild(div);
             div.addEventListener("mouseenter", highlight);
-            div.addEventListener("mouseleave", unhighlight);
         } 
     }
 }
@@ -32,7 +33,10 @@ function highlight(e){
     element.classList.add("hover");
 }
 
-function unhighlight(e){
-    let element = e.target;
-    element.classList.remove("hover");
+function newGame(){
+    createGrid(prompt("How many tiles would you like in the rows and columns?"));
+    Array.from(document.querySelectorAll(".grid-element")).forEach(element => {
+        element.classList.remove("hover");
+    });
 }
+
